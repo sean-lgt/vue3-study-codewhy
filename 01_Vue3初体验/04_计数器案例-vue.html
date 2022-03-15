@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>计数器案例</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="../lib/vue.js"></script>
+  <script>
+    Vue.createApp({
+      template: `
+        <div>
+          <h2>{{count}}</h2>
+          <button @click="increment">+1</button>
+          <button @click="decrement">-1</button>
+        </div>
+      `,
+      data: function() {
+        return {
+          count: 10
+        }
+      },
+      methods: {
+        increment() {
+          this.count += 1
+        },
+        decrement() {
+          this.count -= 1
+        }
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

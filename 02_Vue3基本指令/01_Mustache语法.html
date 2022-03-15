@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <template id="my-app">
+    <!-- 基本使用 -->
+    <h2>{{message}}</h2>
+    <!-- 是一个表达式 -->
+    <h2>{{count * 2}}</h2>
+    <!-- 可以调用函数 -->
+    <h2>{{getReverseMessage()}}</h2>
+    <!-- 三元表达式 -->
+    <h2>{{count == 10?'hh':'ss'}}</h2>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          message: 'Hello World',
+          count: 10,
+        }
+      },
+      methods: {
+        getReverseMessage() {
+          return this.message, split(" ").reserse().join("")
+        }
+      }
+    }
+
+    Vue.createApp(App).mount("#app")
+  </script>
+
+</body>
+
+</html>

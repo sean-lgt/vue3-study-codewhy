@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本地文件引入</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- https://v3.cn.vuejs.org/guide/introduction.html#vue-js-%E6%98%AF%E4%BB%80%E4%B9%88 -->
+  <script src="../lib/vue.js"></script>
+  <script>
+    Vue.createApp({
+      template: `<h2>haha World</h2>`
+    }).mount("#app")
+  </script>
+</body>
+
+</html>
