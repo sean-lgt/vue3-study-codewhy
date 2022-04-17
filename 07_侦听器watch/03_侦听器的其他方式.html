@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+
+  <template id="my-app">
+    <h2>{{info.name}}</h2>
+    <button @click="changeInfo">改变info</button>
+    <button @click="changeInfoName">改变info.name</button>
+    <button @click="changeInfoNbaName">改变info.nba.name</button>
+    <button @click="changeFriendName">改变friends[0].name</button>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          info: { name: "why", age: 18, nba: { name: 'kobe' } },
+          friends: [
+            { name: "why" },
+            { name: "kobe" }
+          ]
+        }
+      },
+      watch: {
+        info(newValue, oldValue) {
+          console.log(newValue, oldValue);
+        },
+        "info.name": function(newName, oldName) {
+          console.log(newName, oldName);
+        },
+        "friends[0].name": function(newName, oldName) {
+          console.log(newName, oldName);
+        },
+        // friends: {
+        //   handler(newFriends, oldFriend) {
+        //   },
+        //   deep: true
+        // }
+      },
+      methods: {
+        changeInfo() {
+          this.info = { name: "kobe" };
+        },
+        changeInfoName() {
+          this.info.name = "kobe";
+        },
+        changeInfoNbaName() {
+          this.info.nba.name = "james";
+        },
+        changeFriendName() {
+          this.friends[0].name = "curry";
+        }
+      },
+      created() {
+        const unwatch = this.$watch("info", function(newInfo, oldInfo) {
+          console.log(newInfo, oldInfo);
+        }, {
+          deep: true,
+          immediate: true
+        })
+        // unwatch()
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+
+</body>
+
+</html>

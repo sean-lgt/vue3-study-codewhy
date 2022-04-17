@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <template id="my-app">
+    <button @click="changeInfo">改变info</button>
+    <button @click="changeInfoName">改变info里的name</button>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          info: {
+            name: 'why',
+            age: 18
+          }
+        }
+      },
+      watch: {
+        // 默认情况下侦听器只会针对侦听的数据本身的改变（内部发生的改变时不能侦听的）
+        // info(newVal, oldVal) {
+        //   console.log('新值', newVal);
+        //   console.log('旧值', oldVal);
+        // },
+
+        // 深度侦听、立即执行
+        info: {
+          handler: function(newVal, oldVal) {
+            console.log('新值', newVal);
+            console.log('旧值', oldVal);
+          },
+          deep: true, //开启深度侦听
+          immediate: true, //是否立即执行
+        }
+      },
+      methods: {
+        changeInfo() {
+          this.info = { name: 'code why' }
+        },
+        changeInfoName() {
+          this.info.name = 'test'
+        }
+      },
+    }
+
+    Vue.createApp(App).mount("#app")
+  </script>
+
+</body>
+
+</html>
