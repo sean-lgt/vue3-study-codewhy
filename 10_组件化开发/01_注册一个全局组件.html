@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <template id="my-app">
+    <component-a></component-a>
+    <component-b></component-b>
+
+    <!-- <component-c></component-c> -->
+    <!-- <ComponentName></ComponentName> -->
+    <component-name></component-name>
+  </template>
+
+  <template id="component-a">
+    <h2>{{title}}</h2>
+    <p>{{desc}}</p>
+    <button @click="btnClick">按钮点击</button>
+  </template>
+
+  <template id="component-b">
+    <div>
+      <input type="text" v-model="message" />
+      <h2>{{message}}</h2>
+    </div>
+  </template>
+
+  <template id="component-c">
+    <h2>ComponentC</h2>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+
+  <script>
+    const App = {
+      template: "#my-app",
+    };
+
+    const app = Vue.createApp(App);
+
+    // 使用app注册一个全局组件app.component()
+    // 全局组件: 意味着注册的这个组件可以在任何的组件模板中使用
+    app.component("component-a", {
+      template: "#component-a",
+      data() {
+        return {
+          title: "我是标题",
+          desc: "我是内容, 哈哈哈哈哈",
+        };
+      },
+      methods: {
+        btnClick() {
+          console.log("按钮的点击");
+        },
+      },
+    });
+
+    app.component("component-b", {
+      template: "#component-b",
+      data() {
+        return {
+          message: "Hello World",
+        };
+      },
+    });
+
+    app.component('ComponentName', {
+      template: "#component-c"
+    })
+
+    app.mount("#app");
+
+    <
+    /body>
+
+    <
+    /html>

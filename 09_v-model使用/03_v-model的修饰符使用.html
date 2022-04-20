@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <template id="my-app">
+    <!-- lazy修饰符 -->
+    <!-- <input type="text" v-model.lazy="message"> -->
+
+    <!-- number修饰符 -->
+    <!-- <input type="text" v-model.number="message"> -->
+    <!-- <button @click="showType">查看类型</button> -->
+    <!-- trim修饰符 -->
+    <input type="text" v-model.trim="message">
+    <h2>{{message}}</h2>
+    <button @click="showResult">查看结果</button>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          message: 'Hello World'
+        }
+      },
+      methods: {
+        showType() {
+          console.log(this.message, typeof this.message);
+        },
+        showResult() {
+          console.log(this.message);
+        }
+      },
+    }
+
+    Vue.createApp(App).mount("#app")
+  </script>
+
+</body>
+
+</html>

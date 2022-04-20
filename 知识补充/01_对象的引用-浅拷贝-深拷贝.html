@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>深浅拷贝</title>
+</head>
+
+<body>
+  <!-- 1.对象的引用赋值 -->
+  <script>
+    // 对象是引用类型  栈和堆  栈存的是地址（指针） 堆存放具体的值  通过栈中的地址找堆中的值
+    const info = { name: 'why', age: 18 }
+    const obj = info
+    info.name = 'hanne'
+    console.log(obj.name)
+  </script>
+  // 对象的浅拷贝
+  <script>
+    const info = { name: 'why', age: 18 }
+    const obj = Object.assign({}, info)
+    info.name = 'hanne'
+    console.log(obj.name);
+  </script>
+  // 对象的深拷贝
+  <script>
+    const info = { name: 'why', age: 18,: { name: 'sfdsf' } }
+    const obj = JSON.parse(JSON.stringify(info))
+    info.list.name = 'hanne'
+    console.log(obj.list.name);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <template id="my-app">
+    <h2>{{message}}</h2>
+    <component-a></component-a>
+  </template>
+
+  <template id="component-a">
+    <h2>我是组件A</h2>
+    <p>我是内容, 哈哈哈哈</p>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+
+  <script>
+    const ComponentA = {
+      template: "#component-a"
+    }
+
+
+    const App = {
+      template: '#my-app',
+      components: {
+        // key: 组件名称
+        // value: 组件对象
+        ComponentA: ComponentA
+      },
+      data() {
+        return {
+          message: "Hello World"
+        }
+      }
+    }
+
+    const app = Vue.createApp(App);
+    // app.component("ComponentA", ComponentA);
+    app.mount('#app');
+  </script>
+
+</body>
+
+</html>
