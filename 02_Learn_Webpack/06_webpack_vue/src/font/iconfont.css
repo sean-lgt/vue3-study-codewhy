@@ -1,0 +1,25 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1611048831079'); /* IE9 */
+  src: url('iconfont.eot?t=1611048831079#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff2?t=1611048831079') format('woff2'),
+  url('iconfont.woff?t=1611048831079') format('woff'),
+  url('iconfont.ttf?t=1611048831079') format('truetype')
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ashbin:before {
+  font-size: 30px;
+  content: "\e665";
+}
+
+.icon-caps-lock:before {
+  content: "\e667";
+}
+
