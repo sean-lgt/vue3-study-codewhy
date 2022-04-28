@@ -1,0 +1,7 @@
+.title {
+  color: red;
+  font-weight: 700;
+  font-size: 30px;
+  /* 需要加浏览器前缀 */
+  user-select: none;
+}
