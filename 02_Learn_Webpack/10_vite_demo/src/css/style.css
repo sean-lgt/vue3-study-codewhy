@@ -1,0 +1,7 @@
+:root {
+  --math-bg: #0096ff;
+}
+
+body {
+  background: var(--math-bg);
+}

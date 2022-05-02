@@ -1,0 +1,26 @@
+{
+  "name": "vite-learn-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.2.33",
+    "lodash-es": "^4.17.21",
+    "postcss-preset-env": "^7.4.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.1",
+    "less": "^4.1.2",
+    "postcss": "^8.4.13",
+    "vite": "^2.9.7",
+    "vue": "^3.2.31"
+  }
+}
