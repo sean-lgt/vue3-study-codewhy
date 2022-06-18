@@ -1,36 +1,77 @@
 <template>
   <div>
-    <h2>当前计数: {{ $store.state.rootCounter }}</h2>
     <hr />
-    <button @click="increment">+1</button>
-    <button @click="add">+1</button>
-    <button @click="decrement">-1</button>
-    <button @click="increment_n({ n: 10 })">+10</button>
+    <h2>{{ homeCounter }}</h2>
+    <h2>{{ doubleHomeCounter }}</h2>
+    <!-- <h2>{{ doubleRootCounter }}</h2> -->
+    <button @click="increment">home+1</button>
+    <button @click="incrementAction">home+1</button>
     <hr />
   </div>
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+// 模块化使用命名空间，使用辅助函数的三种方式
+import {
+  createNamespacedHelpers,
+  // mapState,
+  // mapGetters,
+  // mapMutations,
+  // mapActions,
+} from "vuex";
 
-import { INCREMENT_N } from "../store/mutation-types";
+import { useState, useGetters } from "../hooks/index";
+
+const { mapState, mapGetters, mapMutations, mapActions } =
+  createNamespacedHelpers("home");
 
 export default {
-  methods: {
-    ...mapMutations(["increment", "decrement", INCREMENT_N]),
-    ...mapMutations({
-      add: "increment",
-    }),
+  computed: {
+    // 1.写法一:
+    // ...mapState({
+    //   homeCounter: state => state.home.homeCounter
+    // }),
+    // ...mapGetters({
+    //   doubleHomeCounter: "home/doubleHomeCounter"
+    // })
+    // 2.写法二:
+    // ...mapState("home", ["homeCounter"]),
+    // ...mapGetters("home", ["doubleHomeCounter"])
+    // 3.写法三:
+    ...mapState(["homeCounter"]),
+    ...mapGetters(["doubleHomeCounter"]),
   },
+  methods: {
+    // 1.写法一:
+    // ...mapMutations({
+    //   increment: "home/increment"
+    // }),
+    // ...mapActions({
+    //   incrementAction: "home/incrementAction"
+    // }),
+    // 2.写法二
+    // ...mapMutations("home", ["increment"]),
+    // ...mapActions("home", ["incrementAction"]),
+    // 3.写法三:
+    ...mapMutations(["increment"]),
+    ...mapActions(["incrementAction"]),
+  },
+
   setup() {
-    const storeMutations = mapMutations([
-      "increment",
-      "decrement",
-      INCREMENT_N,
-    ]);
+    // {homeCounter: function}
+    // const state = useState(["rootCounter"])
+    // const rootGetters = useGetters(["doubleRootCounter"])
+    // const getters = useGetters("home", ["doubleHomeCounter"])
+
+    // const mutations = mapMutations(["increment"])
+    // const actions = mapActions(["incrementAction"])
 
     return {
-      ...storeMutations,
+      // ...state,
+      // ...getters,
+      // ...rootGetters
+      // ...mutations,
+      // ...actions
     };
   },
 };
