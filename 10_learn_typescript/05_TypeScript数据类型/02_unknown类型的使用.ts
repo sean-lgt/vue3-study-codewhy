@@ -18,8 +18,8 @@ if (flag) {
   result = bar()
 }
 
-let message: string = result  //不能将类型“unknown”分配给类型“string”
-let num: number = result
+// let message: string = result  //不能将类型“unknown”分配给类型“string”
+// let num: number = result
 
 let test:any = result
 
