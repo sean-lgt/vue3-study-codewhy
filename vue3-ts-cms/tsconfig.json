@@ -1,31 +1,40 @@
 {
   "compilerOptions": {
+    // 目标代码 （ts => js(es5/6/7)）
     "target": "esnext",
+    // 目标代码需要使用的模块化方案
     "module": "esnext",
+    // 严格的检查（any）
     "strict": true,
+    // 对jsx进行怎么样的处理
     "jsx": "preserve",
+    // 辅助的导入功能
     "importHelpers": true,
+    // 按照node的方式去解析模块
     "moduleResolution": "node",
+    // 跳过一些库的类型检测 （第三方库）
     "skipLibCheck": true,
+    // export default / module.exports = {}
+    // 是否允许 es module 和 commonjs 混用
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    // 生成映射文件
     "sourceMap": true,
+    // 文件路径解析时基本url
     "baseUrl": ".",
-    "types": [
-      "webpack-env"
-    ],
+    // 指定要解析使用的类型
+    "types": ["webpack-env"],
+    // 路径解析 编译
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"],
+      "components/*":["src/components/*"]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    // 指定在项目中可以使用哪些库的类型
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    // 元素隐式具有 "any" 类型，因为类型为 "any" 的表达式不能用于索引类型
+    "suppressImplicitAnyIndexErrors": true
   },
+  // 需要解析的目录文件
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
@@ -33,7 +42,6 @@
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  // 排除某些目录文件
+  "exclude": ["node_modules"]
 }
